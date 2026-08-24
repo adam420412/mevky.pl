@@ -1,0 +1,23 @@
+# WordPress core i wtyczki — nie trzymamy w repo motywu
+wp-admin/
+wp-includes/
+wp-content/plugins/
+wp-content/uploads/
+wp-config.php
+
+# Docker
+local/.env
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Edytory
+.idea/
+.vscode/
+*.swp
+
+# Zależności
+node_modules/
+vendor/
