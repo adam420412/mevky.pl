@@ -1,0 +1,54 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:woocommerce/store-notices /-->
+
+<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|60"}}}} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"width":"58%","className":"mevky-portrait"} -->
+<div class="wp-block-column mevky-portrait" style="flex-basis:58%"><!-- wp:woocommerce/product-image-gallery /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"className":"mevky-buybox"} -->
+<div class="wp-block-column mevky-buybox"><!-- wp:post-title {"level":1,"fontSize":"x-large"} /-->
+
+<!-- wp:woocommerce/product-price /-->
+
+<!-- wp:woocommerce/product-summary /-->
+
+<!-- wp:woocommerce/add-to-cart-form /-->
+
+<!-- wp:group {"className":"mevky-accordion","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group mevky-accordion" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:html -->
+<details>
+	<summary>Specyfikacja</summary>
+	<div>[SPECYFIKACJA DO UZUPEŁNIENIA — wymiary, źródło światła, temperatura barwowa, zasilanie, materiał ramy]</div>
+</details>
+<details>
+	<summary>Dostawa i zwroty</summary>
+	<div>Darmowa dostawa. Wysyłka w 48h. 14 dni na zwrot bez podania przyczyny.</div>
+</details>
+<details>
+	<summary>Gwarancja</summary>
+	<div>[WARUNKI GWARANCJI DO UZUPEŁNIENIA]</div>
+</details>
+<!-- /wp:html --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:group {"align":"wide","className":"mevky-reveal","style":{"spacing":{"margin":{"top":"var:preset|spacing|70"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
+<div class="wp-block-group alignwide mevky-reveal" style="margin-top:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Zobacz też</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/product-collection {"queryId":1,"query":{"perPage":2,"pages":1,"offset":0,"postType":"product","order":"asc","orderBy":"title","inherit":false},"displayLayout":{"type":"flex","columns":2}} -->
+<div class="wp-block-woocommerce-product-collection"><!-- wp:woocommerce/product-template -->
+<!-- wp:woocommerce/product-image {"imageSizing":"single","className":"mevky-portrait"} /-->
+<!-- wp:post-title {"textAlign":"center","level":3,"isLink":true,"fontSize":"large"} /-->
+<!-- wp:woocommerce/product-price {"textAlign":"center"} /-->
+<!-- /wp:woocommerce/product-template --></div>
+<!-- /wp:woocommerce/product-collection --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

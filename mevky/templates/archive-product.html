@@ -1,0 +1,29 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--60)"><!-- wp:woocommerce/store-notices /-->
+
+<!-- wp:query-title {"type":"archive","textAlign":"center","fontSize":"xx-large"} /-->
+
+<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
+<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--60)"><!-- wp:woocommerce/product-collection {"queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"menu_order","inherit":true},"displayLayout":{"type":"flex","columns":3}} -->
+<div class="wp-block-woocommerce-product-collection"><!-- wp:woocommerce/product-template -->
+<!-- wp:group {"className":"mevky-card","layout":{"type":"constrained"}} -->
+<div class="wp-block-group mevky-card"><!-- wp:woocommerce/product-image {"imageSizing":"single","className":"mevky-portrait"} /-->
+
+<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large"} /-->
+
+<!-- wp:woocommerce/product-price /--></div>
+<!-- /wp:group -->
+<!-- /wp:woocommerce/product-template -->
+
+<!-- wp:woocommerce/product-collection-no-results -->
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Brak produktów do wyświetlenia.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:woocommerce/product-collection-no-results --></div>
+<!-- /wp:woocommerce/product-collection --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
