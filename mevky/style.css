@@ -1,0 +1,141 @@
+/*
+Theme Name: MEVKY
+Theme URI: https://mevky.pl
+Author: FOTZ Studio Sp. z o.o.
+Author URI: https://fotz.pl
+Description: Autorski motyw blokowy (FSE) dla sklepu MEVKY. Zbudowany od zera, bez kreatora i bez motywu rodzica.
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 8.1
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mevky
+Tags: block-theme, e-commerce, full-site-editing
+*/
+
+/* --------------------------------------------------------------
+   Wszystko, co da się zrobić tokenami, siedzi w theme.json.
+   Tu tylko to, czego theme.json nie obsługuje.
+   -------------------------------------------------------------- */
+
+/* Płynne przewijanie z poszanowaniem preferencji użytkownika */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+/* Wejście sekcji przy scrollu — ŚWIADOMIE WYŁĄCZONE.
+   Pierwsza wersja używała scroll-driven animations (animation-timeline: view()).
+   Problem: gdy strona jest krótsza niż okno albo okno jest bardzo wysokie,
+   zakres "entry" nigdy nie postępuje i sekcja zostaje na opacity 0 — treść
+   znika na stałe. W sklepie niewidoczna sekcja to niewidoczny produkt,
+   więc efekt nie jest wart tego ryzyka.
+   Klasa .mevky-reveal została w znacznikach jako hook na przyszłość.
+   Jeśli wracamy do efektu, robimy to na IntersectionObserver z domyślnym
+   stanem widocznym i wygaszaniem dopiero po potwierdzeniu obsługi. */
+
+/* Kadr pionowy 4:5 dla zdjęć produktowych i aranżacyjnych */
+.mevky-portrait img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	width: 100%;
+	height: auto;
+}
+
+/* Karta produktu bez ramek — zdjęcie niesie całość */
+.mevky-card figure {
+	margin: 0 0 1rem;
+	overflow: hidden;
+}
+
+.mevky-card img {
+	transition: transform 600ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mevky-card:hover img {
+		transform: scale(1.03);
+	}
+}
+
+/* Sticky panel zakupu — tylko desktop */
+@media (min-width: 900px) {
+	.mevky-buybox {
+		position: sticky;
+		top: 6rem;
+		align-self: start;
+	}
+}
+
+/* Nagłówek — cienka linia zamiast cienia */
+.wp-block-template-part.mevky-header {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+/* Litery akcentowe: szampan tylko w mikro-detalach */
+.mevky-eyebrow {
+	color: var(--wp--preset--color--accent);
+	font-size: var(--wp--preset--font-size--small);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+/* Omnibus */
+.mevky-omnibus {
+	color: var(--wp--preset--color--muted);
+	font-size: var(--wp--preset--font-size--small);
+	margin-block: 0.5rem 1.5rem;
+}
+
+/* Akordeony (details/summary) — natywne, zero JS */
+.mevky-accordion details {
+	border-top: 1px solid var(--wp--preset--color--line);
+}
+
+.mevky-accordion details:last-of-type {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.mevky-accordion summary {
+	cursor: pointer;
+	list-style: none;
+	padding-block: 1.25rem;
+	font-weight: 500;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+.mevky-accordion summary::-webkit-details-marker {
+	display: none;
+}
+
+.mevky-accordion summary::after {
+	content: "+";
+	font-size: 1.25rem;
+	color: var(--wp--preset--color--muted);
+	transition: transform 250ms ease;
+}
+
+.mevky-accordion details[open] summary::after {
+	content: "\2212";
+}
+
+.mevky-accordion details > *:not(summary) {
+	padding-bottom: 1.25rem;
+	color: var(--wp--preset--color--muted);
+}
+
+/* Checkout bez rozpraszaczy */
+.woocommerce-checkout .mevky-header nav {
+	display: none;
+}
+
+/* Focus widoczny — dostępność nie jest opcją */
+:where(a, button, input, select, textarea, summary):focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 3px;
+}

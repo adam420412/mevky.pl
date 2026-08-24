@@ -1,0 +1,206 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "680px",
+      "wideSize": "1240px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "defaultDuotone": false,
+      "custom": false,
+      "palette": [
+        { "slug": "base",     "color": "#F7F4EF", "name": "Kość słoniowa" },
+        { "slug": "surface",  "color": "#FFFFFF", "name": "Biel" },
+        { "slug": "contrast", "color": "#1A1A18", "name": "Głęboka czerń" },
+        { "slug": "muted",    "color": "#8A857C", "name": "Szarość" },
+        { "slug": "line",     "color": "#E3DDD3", "name": "Linia" },
+        { "slug": "accent",   "color": "#C9A227", "name": "Szampan" }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fluid": true,
+      "customFontSize": false,
+      "lineHeight": true,
+      "dropCap": false,
+      "fontFamilies": [
+        {
+          "slug": "display",
+          "name": "Display",
+          "fontFamily": "Fraunces, Georgia, 'Times New Roman', serif",
+          "fontFace": [
+            {
+              "fontFamily": "Fraunces",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+              "src": [ "file:./assets/fonts/fraunces-latin.woff2" ]
+            },
+            {
+              "fontFamily": "Fraunces",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF",
+              "src": [ "file:./assets/fonts/fraunces-latin-ext.woff2" ]
+            }
+          ]
+        },
+        {
+          "slug": "body",
+          "name": "Tekst",
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Inter",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+              "src": [ "file:./assets/fonts/inter-latin.woff2" ]
+            },
+            {
+              "fontFamily": "Inter",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF",
+              "src": [ "file:./assets/fonts/inter-latin-ext.woff2" ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small",  "name": "Mały",  "size": "0.875rem",
+          "fluid": false },
+        { "slug": "medium", "name": "Bazowy", "size": "1rem",
+          "fluid": { "min": "1rem", "max": "1.0625rem" } },
+        { "slug": "large",  "name": "Duży",  "size": "1.375rem",
+          "fluid": { "min": "1.125rem", "max": "1.375rem" } },
+        { "slug": "x-large", "name": "Nagłówek", "size": "2.25rem",
+          "fluid": { "min": "1.75rem", "max": "2.25rem" } },
+        { "slug": "xx-large", "name": "Duży nagłówek", "size": "3.25rem",
+          "fluid": { "min": "2.25rem", "max": "3.25rem" } },
+        { "slug": "display", "name": "Display", "size": "4.5rem",
+          "fluid": { "min": "2.75rem", "max": "4.5rem" } }
+      ]
+    },
+    "spacing": {
+      "defaultSpacingSizes": false,
+      "units": [ "px", "rem", "%", "vw", "vh" ],
+      "spacingSizes": [
+        { "slug": "20", "name": "1", "size": "0.5rem" },
+        { "slug": "30", "name": "2", "size": "1rem" },
+        { "slug": "40", "name": "3", "size": "1.75rem" },
+        { "slug": "50", "name": "4", "size": "3rem" },
+        { "slug": "60", "name": "5", "size": "5rem" },
+        { "slug": "70", "name": "6", "size": "7.5rem" },
+        { "slug": "80", "name": "7", "size": "10rem" }
+      ]
+    },
+    "border": { "radius": true, "color": true, "style": true, "width": true },
+    "shadow": { "defaultPresets": false }
+  },
+
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--base)",
+      "text": "var(--wp--preset--color--contrast)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "fontSize": "var(--wp--preset--font-size--medium)",
+      "lineHeight": "1.7",
+      "letterSpacing": "-0.005em"
+    },
+    "spacing": {
+      "blockGap": "var(--wp--preset--spacing--40)",
+      "padding": {
+        "left": "var(--wp--preset--spacing--40)",
+        "right": "var(--wp--preset--spacing--40)"
+      }
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontWeight": "400",
+          "lineHeight": "1.1",
+          "letterSpacing": "-0.02em"
+        }
+      },
+      "h1": { "typography": { "fontSize": "var(--wp--preset--font-size--xx-large)" } },
+      "h2": { "typography": { "fontSize": "var(--wp--preset--font-size--x-large)" } },
+      "h3": { "typography": { "fontSize": "var(--wp--preset--font-size--large)" } },
+      "h4": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)",
+          "fontSize": "var(--wp--preset--font-size--medium)",
+          "fontWeight": "600",
+          "letterSpacing": "0.08em",
+          "textTransform": "uppercase"
+        }
+      },
+      "link": {
+        "color": { "text": "var(--wp--preset--color--contrast)" },
+        "typography": { "textDecoration": "none" },
+        ":hover": { "typography": { "textDecoration": "underline" } }
+      },
+      "button": {
+        "color": {
+          "background": "var(--wp--preset--color--contrast)",
+          "text": "var(--wp--preset--color--base)"
+        },
+        "border": { "radius": "0" },
+        "spacing": { "padding": { "top": "1rem", "bottom": "1rem", "left": "2.25rem", "right": "2.25rem" } },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)",
+          "fontSize": "var(--wp--preset--font-size--small)",
+          "fontWeight": "500",
+          "letterSpacing": "0.1em",
+          "textTransform": "uppercase"
+        },
+        ":hover": {
+          "color": {
+            "background": "var(--wp--preset--color--accent)",
+            "text": "var(--wp--preset--color--contrast)"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "core/image": { "spacing": { "margin": { "top": "0", "bottom": "0" } } },
+      "core/separator": { "color": { "text": "var(--wp--preset--color--line)" } },
+      "core/site-title": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontSize": "1.5rem",
+          "fontWeight": "400",
+          "letterSpacing": "0.22em",
+          "textTransform": "uppercase"
+        }
+      },
+      "woocommerce/product-price": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)",
+          "fontSize": "var(--wp--preset--font-size--large)"
+        }
+      }
+    }
+  },
+
+  "templateParts": [
+    { "name": "header", "title": "Nagłówek", "area": "header" },
+    { "name": "footer", "title": "Stopka", "area": "footer" }
+  ],
+
+  "customTemplates": [
+    { "name": "page-wide", "title": "Strona szeroka", "postTypes": [ "page" ] }
+  ]
+}
