@@ -1,0 +1,63 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: mevky-db
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wp
+      MARIADB_PASSWORD: wp
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:php8.3-apache
+    container_name: mevky-wp
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'WP_DEBUG_LOG', true );
+        define( 'WP_DEBUG_DISPLAY', false );
+        define( 'DISABLE_WP_CRON', true );
+    volumes:
+      - wp_data:/var/www/html
+      # Motyw montowany z repozytorium — edytujesz lokalnie, widzisz od razu.
+      - ../mevky:/var/www/html/wp-content/themes/mevky
+
+  cli:
+    image: wordpress:cli-php8.3
+    container_name: mevky-cli
+    depends_on:
+      - wordpress
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wp_data:/var/www/html
+      - ../mevky:/var/www/html/wp-content/themes/mevky
+      - ./setup.sh:/setup.sh:ro
+    entrypoint: ["/bin/sh"]
+    command: ["-c", "sleep infinity"]
+
+volumes:
+  db_data:
+  wp_data:
