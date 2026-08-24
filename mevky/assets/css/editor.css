@@ -1,0 +1,19 @@
+/* Styl edytora — żeby to, co widzisz w panelu, odpowiadało frontowi. */
+.editor-styles-wrapper .mevky-eyebrow {
+	color: var(--wp--preset--color--accent);
+	font-size: var(--wp--preset--font-size--small);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.editor-styles-wrapper .mevky-portrait img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+
+.editor-styles-wrapper .mevky-accordion summary {
+	cursor: pointer;
+	padding-block: 1.25rem;
+	font-weight: 500;
+	border-top: 1px solid var(--wp--preset--color--line);
+}
