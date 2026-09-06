@@ -66,3 +66,11 @@ stronie: `deployment/import-product-copy.php` (domyślnie tylko podgląd).
 `local/validate.php` — PHP, konfiguracja motywu i renderowanie elementów produktu.
 `npm run check` w `local/` — trasy HTTP, zasoby i operacje na koszyku.
 Zweryfikowano w przeglądarce wejście z karty produktu, przełączanie zdjęć, dodanie do koszyka i otwarcie formularza zamówienia. Testy HTTP dodatkowo wykrywają stronę coming soon, surowe shortcode’y i pustą zawartość koszyka.
+
+## Statyczny podgląd na Vercelu
+
+Katalog `public/` jest prezentacyjnym eksportem wyrenderowanego sklepu, a
+`vercel.json` wskazuje go jako katalog publikacji. Vercel nie uruchamia PHP ani
+WordPressa, dlatego zakup i płatność są w tym podglądzie świadomie wyłączone.
+Aktualizacja eksportu przy działającym lokalnym sklepie:
+`node deployment/export-static-preview.mjs`.

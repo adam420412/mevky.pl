@@ -1,0 +1,3 @@
+
+.mevky-preview-toast{position:fixed;z-index:99999;left:50%;bottom:24px;transform:translate(-50%,20px);max-width:min(520px,calc(100vw - 32px));box-sizing:border-box;padding:14px 18px;background:#303626;color:#fff;font:500 14px/1.45 Inter,Arial,sans-serif;box-shadow:0 12px 36px #0003;opacity:0;pointer-events:none;transition:.2s ease}
+.mevky-preview-toast.is-visible{opacity:1;transform:translate(-50%,0)}
