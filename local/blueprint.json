@@ -1,0 +1,28 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "7.1"
+  },
+  "plugins": [
+    "sqlite-database-integration",
+    "woocommerce"
+  ],
+  "constants": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "DISABLE_WP_CRON": true,
+    "WP_ENVIRONMENT_TYPE": "local"
+  },
+  "steps": [
+    {
+      "step": "setSiteLanguage",
+      "language": "pl_PL"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/mevky-local/seed.php'; require '/mevky-local/apply-copy.php'; require '/mevky-local/validate.php';"
+    }
+  ]
+}

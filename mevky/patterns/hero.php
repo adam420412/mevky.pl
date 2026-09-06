@@ -6,23 +6,16 @@
  * Inserter: true
  */
 ?>
-<!-- wp:cover {"url":"","dimRatio":20,"overlayColor":"contrast","minHeight":88,"minHeightUnit":"vh","align":"full","style":{"spacing":{"margin":{"top":"0"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
-<div class="wp-block-cover alignfull" style="margin-top:0;min-height:88vh"><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-20 has-background-dim"></span>
-<div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","className":"mevky-eyebrow","style":{"color":{"text":"#F7F4EF"}}} -->
-<p class="has-text-align-center mevky-eyebrow has-text-color" style="color:#F7F4EF">Lustra z podświetleniem LED</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"textAlign":"center","level":1,"style":{"color":{"text":"#F7F4EF"}},"fontSize":"display"} -->
-<h1 class="wp-block-heading has-text-align-center has-text-color has-display-font-size" style="color:#F7F4EF">Nie tylko lustro</h1>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"align":"center","style":{"color":{"text":"#F7F4EF"},"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"fontSize":"large"} -->
-<p class="has-text-align-center has-text-color has-large-font-size" style="color:#F7F4EF;margin-top:var(--wp--preset--spacing--30)">Najpiękniejszy punkt Twojej toaletki.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
-<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:button {"backgroundColor":"base","textColor":"contrast"} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-contrast-color has-base-background-color has-text-color has-background wp-element-button" href="/sklep/">Zobacz kolekcję</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div></div>
-<!-- /wp:cover -->
+<!-- wp:group {"align":"full","className":"mevky-hero","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull mevky-hero">
+<!-- wp:group {"className":"mevky-hero-copy","layout":{"type":"default"}} -->
+<div class="wp-block-group mevky-hero-copy">
+<!-- wp:paragraph {"className":"mevky-eyebrow"} --><p class="mevky-eyebrow">MEVKY · LUSTRA Z PODŚWIETLENIEM LED</p><!-- /wp:paragraph -->
+<!-- wp:heading {"level":1} --><h1 class="wp-block-heading">Piękno<br>w codzienności.</h1><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Twoja chwila. Twoje światło.<br>Poznaj lustra, które zmieniają codzienny makijaż w mały rytuał.</p><!-- /wp:paragraph -->
+<!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/sklep/' ) ); ?>">Odkryj kolekcję <span aria-hidden="true">↗</span></a></div><!-- /wp:button --></div><!-- /wp:buttons -->
+<!-- wp:paragraph {"className":"mevky-hero-note"} --><p class="mevky-hero-note">Trzy modele. Jedna piękna codzienność.</p><!-- /wp:paragraph -->
+</div><!-- /wp:group -->
+<!-- wp:image {"className":"mevky-hero-image"} -->
+<figure class="wp-block-image mevky-hero-image"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/hero.webp' ) ); ?>" alt="Podświetlone lustro MEVKY na kamiennej toaletce" width="1347" height="1102" fetchpriority="high" loading="eager"/></figure><!-- /wp:image -->
+</div><!-- /wp:group -->

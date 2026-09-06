@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "step": "runPHP",
+      "code": "<?php token_get_all(file_get_contents('/mevky-deploy/mevky-deployment-helper/mevky-deployment-helper.php'), TOKEN_PARSE); require '/mevky-deploy/mevky-deployment-helper/mevky-deployment-helper.php'; $items=mevky_deployment_items(); if(is_wp_error($items) || count($items)!==3) throw new RuntimeException('Deployment helper did not recognize all products'); file_put_contents('/mevky-local/.runtime/deployment-helper-validation.txt','PASS: syntax and 3 products recognized');"
+    }
+  ]
+}

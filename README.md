@@ -1,121 +1,68 @@
-# mevky.pl
+# MEVKY — sklep WordPress + WooCommerce
 
-Sklep internetowy marki MEVKY — lustra do makijażu z podświetleniem LED.
+Autorski motyw blokowy FSE, bez Elementora i motywu rodzica.
+Przebudowa lokalna na podstawie archiwum projektu oraz mevky.pl.
 
-Motyw blokowy (FSE) zbudowany od zera dla WordPressa + WooCommerce.
-Bez Elementora, bez motywu rodzica, bez frameworka CSS.
-
-**Klient:** EMDE Norbert Białas
-**Wykonawca:** FOTZ Studio Sp. z o.o.
-**Umowa:** 1/08/2026
-**Termin:** 20–28.08.2026 (7 dni roboczych)
-
----
-
-## Szybki start
+## Uruchomienie
 
 ```bash
 cd local
-make setup
+npm ci
+npm start
 ```
 
-Sklep: http://localhost:8080 · Panel: `admin` / `admin`
+Sklep: **http://localhost:8080** · Panel: **http://localhost:8080/wp-admin/**
 
-Pierwszy przebieg trwa 2–3 minuty. Wymaga tylko Dockera.
+Lokalny login `admin`, hasło `mevky-local`. Dane pozostają na dysku.
+Szczegóły: [local/README.md](local/README.md).
 
----
+## Wersja 0.3 — przygotowanie do wdrożenia
+
+- Fotograficzny hero, duża typografia Fraunces, oliwkowe akcenty i wyraźny rytm sekcji.
+- Autorskie karty kolekcji: zdjęcie główne i drugi kadr, opis modelu, aktualna cena,
+  numeracja oraz czytelne przejście do szczegółów.
+- Przebudowana strona produktu: galeria z miniaturami, powiększenie w natywnym
+  dialogu, wybór modelu, panel zakupowy i informacje o dostawie.
+- Koszyk i formularz zakupowy pozostają natywnymi funkcjami WooCommerce.
+- Menu z prawdziwymi odnośnikami i widocznym koszykiem na telefonie.
+- Uzupełnione fotografie, historia marki, FAQ i dane kontaktowe.
+- Lokalne fonty i obrazy, obsługa klawiatury, reduced motion i układy mobilne.
 
 ## Struktura
 
-```
-.
-├── mevky/              motyw blokowy (to jest właściwy produkt)
-│   ├── theme.json      design system — kolory, typografia, spacing, layout
-│   ├── style.css       tylko to, czego theme.json nie obsługuje
-│   ├── functions.php   Woo, preload fontów, Omnibus, checkout
-│   ├── templates/      7 szablonów
-│   ├── parts/          header, footer
-│   ├── patterns/       7 wzorców blokowych
-│   └── assets/fonts/   Fraunces + Inter, self-hosted
-└── local/              środowisko deweloperskie na Dockerze
-    ├── docker-compose.yml
-    ├── setup.sh        provisioning: WP + Woo + PL + produkty testowe
-    └── Makefile
-```
+- `mevky/theme.json` — tokeny i ustawienia edytora.
+- `mevky/assets/css/storefront.css` — nowy system wizualny sklepu.
+- `mevky/inc/storefront.php` — prezentacja danych WooCommerce; shortcode'y użyte w szablonach FSE.
+- `mevky/assets/js/storefront.js` — miniatury i powiększanie zdjęć.
+- `mevky/templates/`, `parts/`, `patterns/` — szablony, nagłówek, stopka, sekcje.
+- `local/` — odtwarzalne środowisko i weryfikacja.
 
----
+## Dane źródłowe
 
-## Design system
+Publiczna oferta mevky.pl z 5.09.2026: Aura 50 — 399 zł, Crystal 40 — 299 zł,
+Crystal 30 — 249 zł. Zdjęcia zapisane lokalnie wraz z manifestem źródeł.
+Aktualne dane firmy zastępują nieaktualny adres z początkowego archiwum.
+W opisie Crystal 30 na stronie źródłowej występują sprzeczne wymiary (30 i 40 cm).
+Pominięto ten fragment specyfikacji w danych lokalnych; wymiary wymagają
+potwierdzenia przed publikacją. Nazwy modeli zachowano.
 
-| Token | Wartość | Zastosowanie |
-|---|---|---|
-| `base` | `#F7F4EF` | tło strony |
-| `contrast` | `#1A1A18` | tekst, przyciski |
-| `accent` | `#C9A227` | wyłącznie mikro-detale |
-| `muted` | `#8A857C` | tekst drugorzędny |
-| `line` | `#E3DDD3` | separatory |
+## Przed wdrożeniem produkcyjnym
 
-Display: **Fraunces** (variable). Tekst: **Inter** (variable).
-Oba self-hosted, latin + latin-ext, preload w `functions.php`.
+Ta wersja działa lokalnie. Realne płatności, InPost, zgody analityczne i piksele
+nie zostały skonfigurowane. Lokalna metoda testowa i blokada e-maili są
+oddzielone od motywu. Dokumenty prawne prowadzą do istniejącej domeny.
+Przed migracją pozostają integracje sklepu, przekierowania i sprawdzenie
+polityki prezentowania promocji. Błędny automatyczny odczyt historii cen został
+zastąpiony polem zweryfikowanej ceny przed promocją.
 
-Layout: treść 680 px, szeroko 1240 px. Zdjęcia w kadrze 4:5.
+Paczka motywu: `release/MEVKY-0.3.1.zip`. Dla instalacji bez SSH dostępna jest
+również wtyczka `release/MEVKY-pomocnik-wdrozenia-1.0.0.zip`: po aktywacji motywu
+otwórz **Narzędzia → Wdrożenie MEVKY** i zastosuj przygotowane opisy. Dokładny stan i instrukcja wdrożenia:
+[deployment/READINESS.md](deployment/READINESS.md). Import opisów na istniejącej
+stronie: `deployment/import-product-copy.php` (domyślnie tylko podgląd).
 
----
+## Weryfikacja
 
-## Status
-
-### Zrobione
-
-- [x] design system w `theme.json`
-- [x] szablony: front-page, single-product, archive-product, page, page-wide, index, 404
-- [x] 7 wzorców blokowych
-- [x] fonty self-hosted z `unicodeRange` (polskie znaki działają)
-- [x] checkout odchudzony o zbędne pola
-- [x] szkielet Omnibus
-- [x] dane strukturalne Organization
-- [x] akordeony bez JS
-- [x] środowisko lokalne na Dockerze
-- [x] test na WP 7.1 + Woo 11.0.1 — wszystkie ścieżki 200, zero błędów PHP
-
-### Do zrobienia
-
-- [ ] treści — miejsca oznaczone `[DO UZUPEŁNIENIA]`
-- [ ] zdjęcia: hero (`patterns/hero.php`, atrybut `url`) i aranżacyjne (`historia.php`)
-- [ ] menu — utworzyć i przypiąć w nagłówku i stopce
-- [ ] ikona koszyka znika na mobile — podejrzenie zawijania flexa w `parts/header.html`
-- [ ] Przelewy24 — wtyczka + konfiguracja na koncie klienta
-- [ ] InPost + geowidget paczkomatów
-- [ ] baner cookies z kategoriami i blokowaniem skryptów przed zgodą
-- [ ] GA4 / GTM / Meta Pixel + CAPI, zdarzenia e-commerce
-- [ ] mapa przekierowań 301 ze starych URL-i — **przed** przełączeniem
-- [ ] pomiar Lighthouse na produkcji po wgraniu zdjęć
-
----
-
-## Decyzje techniczne
-
-**Dlaczego WooCommerce, a nie custom w Next.js.**
-Przy trzech SKU wąskim gardłem nie jest silnik, tylko Elementor. Woo ma
-gotowy checkout, panel zamówień, obsługę zwrotów i integracje płatnicze —
-odtworzenie tego od zera to trzy tygodnie, nie siedem dni. Custom miałby
-sens przy setkach produktów albo nietypowej konfiguracji.
-
-**Dlaczego nie ma animacji przy scrollu.**
-Pierwsza wersja używała `animation-timeline: view()`. Przy wysokim oknie
-albo krótkiej stronie zakres `entry` nigdy nie postępuje i sekcja zostaje
-na `opacity: 0`. Na renderze strony głównej nagłówek „Kolekcja" i trzy
-produkty pod nim były niewidoczne na stałe. Efekt wycięty. Klasa
-`.mevky-reveal` została jako hook — powrót tylko na IntersectionObserver
-z domyślnym stanem widocznym.
-
-**Uwaga o Omnibus.**
-`functions.php` loguje cenę przy każdym zapisie produktu i pokazuje
-minimum z 30 dni. Historia zbiera się dopiero od wdrożenia — sprzed
-migracji nie ma. Jeśli klient planuje promocję w pierwszym miesiącu,
-trzeba uzupełnić `_mevky_price_history` ręcznie.
-
----
-
-## Wymagania
-
-WordPress 6.5+ · PHP 8.1+ · WooCommerce
+`local/validate.php` — PHP, konfiguracja motywu i renderowanie elementów produktu.
+`npm run check` w `local/` — trasy HTTP, zasoby i operacje na koszyku.
+Zweryfikowano w przeglądarce wejście z karty produktu, przełączanie zdjęć, dodanie do koszyka i otwarcie formularza zamówienia. Testy HTTP dodatkowo wykrywają stronę coming soon, surowe shortcode’y i pustą zawartość koszyka.

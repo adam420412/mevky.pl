@@ -21,3 +21,9 @@ Thumbs.db
 # Zależności
 node_modules/
 vendor/
+
+# Persistent local WordPress runtime
+local/.runtime/
+
+# Nieaktualna paczka robocza; bieżące wydanie jest wersjonowane
+release/MEVKY-0.3.0.zip

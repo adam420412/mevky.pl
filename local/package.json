@@ -1,0 +1,17 @@
+{
+  "name": "mevky-local",
+  "version": "1.0.0",
+  "description": "Kompletny sklep na localhost: WordPress + WooCommerce + motyw MEVKY, z polskimi ustawieniami i trzema produktami testowymi.",
+  "main": "index.js",
+  "scripts": {
+    "start": "bash start.sh",
+    "check": "node check-http.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wp-playground/cli": "3.1.52"
+  },
+  "private": true
+}

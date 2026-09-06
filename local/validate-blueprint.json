@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "step": "runPHP",
+      "code": "<?php require '/mevky-local/seed.php'; require '/mevky-local/apply-copy.php'; require '/mevky-local/validate.php';"
+    }
+  ]
+}
