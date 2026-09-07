@@ -1,8 +1,10 @@
 import { mkdir, rm, writeFile } from 'node:fs/promises';
-import { dirname, extname, join } from 'node:path';
+import { dirname, extname } from 'node:path';
 
 const origin = process.env.MEVKY_PREVIEW_SOURCE || 'http://localhost:8080';
 const output = new URL('../public/', import.meta.url);
+const wpCoreAssetPrefix = '/wp-core-assets/';
+
 const routes = [
   '/',
   '/sklep/',
@@ -10,21 +12,36 @@ const routes = [
   '/produkt/lustro-crystal-40/',
   '/produkt/lustro-crystal-30/',
   '/kontakt-i-dane-firmy/',
+  '/regulamin/',
+  '/polityka-prywatnosci/',
   '/koszyk/',
   '/zamowienie/',
 ];
-const assetPaths = new Set();
+
+const assetPaths = new Map();
+
+function rewriteAssetPathForPreview(path) {
+  return path.replace(/^\/wp-includes\//, wpCoreAssetPrefix);
+}
+
+function rewriteAssetPaths(text) {
+  return text.replaceAll('/wp-includes/', wpCoreAssetPrefix);
+}
 
 function discoverAssets(text) {
   for (const match of text.matchAll(/\/(?:wp-content|wp-includes)\/[^\s"'(),<>]+/g)) {
-    const path = match[0].replace(/&amp;/g, '&').split(/[?#]/)[0].replace(/[\\/]+$/, '');
-    if (extname(path)) assetPaths.add(path);
+    const sourcePath = match[0].replace(/&amp;/g, '&').split(/[?#]/)[0].replace(/[\\/]+$/, '');
+    if (extname(sourcePath) && !sourcePath.includes('{') && !sourcePath.includes('}')) {
+      const destinationPath = rewriteAssetPathForPreview(sourcePath);
+      assetPaths.set(sourcePath, destinationPath);
+    }
   }
 }
 
 function prepareHtml(html) {
   discoverAssets(html);
-  return html
+  const normalizedHtml = rewriteAssetPaths(html);
+  return normalizedHtml
     .replace(/<link[^>]+href=["']\/\/localhost["'][^>]*>\s*/gi, '')
     .replace(/<link[^>]+type=["'][^"']*\+oembed["'][^>]*>\s*/gi, '')
     .replace(/<link[^>]+type=["']application\/rss\+xml["'][^>]*>\s*/gi, '')
@@ -32,16 +49,21 @@ function prepareHtml(html) {
     .replaceAll(origin.replaceAll('/', '\\/'), '')
     .replaceAll(origin, '')
     .replace(/<link[^>]+href=["']\/xmlrpc\.php[^"']*["'][^>]*>\s*/gi, '')
-    .replace(/href=(["'])\/moje-konto\/\1/g, 'href="#" data-mevky-preview-account')
+    .replace(/href=("|')\/moje-konto\/\1/g, 'href="#" data-mevky-preview-account')
     .replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '')
     .replace(/<meta[^>]+property=["']og:url["'][^>]*>/gi, '')
     .replace('</head>', '<link rel="stylesheet" href="/preview.css"><script src="/preview.js" defer></script></head>')
     .replace(/[ \t]+$/gm, '');
 }
 
-async function fetchRequired(url) {
+async function fetchRequired(url, required = true) {
   const response = await fetch(url);
-  if (!response.ok) throw new Error(`${response.status} ${url}`);
+  if (!response.ok) {
+    if (!required && response.status === 404) {
+      return null;
+    }
+    throw new Error(`${response.status} ${url}`);
+  }
   return response;
 }
 
@@ -49,26 +71,32 @@ await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 
 for (const route of routes) {
-  const response = await fetchRequired(origin + route);
+  const response = await fetchRequired(origin + route, true);
   const html = prepareHtml(await response.text());
   const destination = route === '/' ? new URL('index.html', output) : new URL(`.${route}index.html`, output);
   await mkdir(dirname(destination.pathname), { recursive: true });
   await writeFile(destination, html);
 }
 
-// CSS can reference additional fonts and images, so keep downloading until
-// every newly discovered local asset has been copied.
 const copied = new Set();
 while (copied.size < assetPaths.size) {
-  for (const path of [...assetPaths]) {
-    if (copied.has(path)) continue;
-    const response = await fetchRequired(origin + path);
+  for (const [sourcePath, destinationPath] of [...assetPaths]) {
+    if (copied.has(sourcePath)) continue;
+
+    const response = await fetchRequired(origin + sourcePath, false);
+    if (!response) {
+      copied.add(sourcePath);
+      continue;
+    }
     const bytes = Buffer.from(await response.arrayBuffer());
-    const destination = new URL(`.${path}`, output);
+    const destination = new URL(`.${destinationPath}`, output);
     await mkdir(dirname(destination.pathname), { recursive: true });
     await writeFile(destination, bytes);
-    copied.add(path);
-    if (response.headers.get('content-type')?.includes('text/css')) discoverAssets(bytes.toString());
+
+    copied.add(sourcePath);
+    if (response.headers.get('content-type')?.includes('text/css')) {
+      discoverAssets(bytes.toString());
+    }
   }
 }
 
@@ -83,4 +111,5 @@ await writeFile(new URL('preview.js', output), `
 
 const notFound = await fetch(origin + '/strona-nie-istnieje/');
 await writeFile(new URL('404.html', output), prepareHtml(await notFound.text()));
+
 console.log(`Static preview: ${routes.length} pages, ${copied.size} assets → ${output.pathname}`);
