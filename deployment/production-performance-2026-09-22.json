@@ -1,0 +1,122 @@
+[
+  {
+    "page": "home",
+    "device": "mobile",
+    "url": "https://mevky.pl/",
+    "time": "2026-09-22T18:56:03.544Z",
+    "lighthouse": "13.5.0",
+    "score": 95,
+    "metrics": {
+      "first-contentful-paint": 1790.5435,
+      "largest-contentful-paint": 2648.5434999999998,
+      "total-blocking-time": 23,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "home",
+    "device": "desktop",
+    "url": "https://mevky.pl/",
+    "time": "2026-09-22T18:56:15.572Z",
+    "lighthouse": "13.5.0",
+    "score": 100,
+    "metrics": {
+      "first-contentful-paint": 358.9125,
+      "largest-contentful-paint": 518.9125,
+      "total-blocking-time": 0,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "aura",
+    "device": "mobile",
+    "url": "https://mevky.pl/produkt/lustro-aura-50/",
+    "time": "2026-09-22T18:56:28.005Z",
+    "lighthouse": "13.5.0",
+    "score": 95,
+    "metrics": {
+      "first-contentful-paint": 1784.0900000000001,
+      "largest-contentful-paint": 2725.09,
+      "total-blocking-time": 59,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "aura",
+    "device": "desktop",
+    "url": "https://mevky.pl/produkt/lustro-aura-50/",
+    "time": "2026-09-22T18:56:40.262Z",
+    "lighthouse": "13.5.0",
+    "score": 100,
+    "metrics": {
+      "first-contentful-paint": 359.1685,
+      "largest-contentful-paint": 549.1685,
+      "total-blocking-time": 0,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "crystal40",
+    "device": "mobile",
+    "url": "https://mevky.pl/produkt/lustro-crystal-40/",
+    "time": "2026-09-22T18:59:56.751Z",
+    "lighthouse": "13.5.0",
+    "score": 92,
+    "metrics": {
+      "first-contentful-paint": 1782.876,
+      "largest-contentful-paint": 3081.876,
+      "total-blocking-time": 26,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "crystal40",
+    "device": "desktop",
+    "url": "https://mevky.pl/produkt/lustro-crystal-40/",
+    "time": "2026-09-22T18:55:26.697Z",
+    "lighthouse": "13.5.0",
+    "score": 100,
+    "metrics": {
+      "first-contentful-paint": 354.368,
+      "largest-contentful-paint": 554.3679999999999,
+      "total-blocking-time": 0,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "crystal30",
+    "device": "mobile",
+    "url": "https://mevky.pl/produkt/lustro-crystal-30/",
+    "time": "2026-09-22T18:55:39.348Z",
+    "lighthouse": "13.5.0",
+    "score": 95,
+    "metrics": {
+      "first-contentful-paint": 1762.229,
+      "largest-contentful-paint": 2662.2290000000003,
+      "total-blocking-time": 31,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  },
+  {
+    "page": "crystal30",
+    "device": "desktop",
+    "url": "https://mevky.pl/produkt/lustro-crystal-30/",
+    "time": "2026-09-22T18:55:51.706Z",
+    "lighthouse": "13.5.0",
+    "score": 100,
+    "metrics": {
+      "first-contentful-paint": 341.579,
+      "largest-contentful-paint": 501.579,
+      "total-blocking-time": 0,
+      "cumulative-layout-shift": 0
+    },
+    "warnings": []
+  }
+]

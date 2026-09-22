@@ -7,7 +7,7 @@ Description: Autorski motyw blokowy (FSE) dla sklepu MEVKY. Zbudowany od zera, b
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Version: 0.3.3
+Version: 0.3.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: mevky
@@ -298,3 +298,6 @@ Tags: block-theme, e-commerce, full-site-editing
  .mevky-card .wp-block-woocommerce-product-image img { aspect-ratio:1/1; }
 }
 @media(prefers-reduced-motion:reduce) { .mevky-card img { transition:none; } }
+
+.mevky-cart-link{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;color:inherit;text-decoration:none}
+@media(max-width:781px){.mevky-cart-link{order:2}}

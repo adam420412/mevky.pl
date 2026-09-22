@@ -1,6 +1,6 @@
-# MEVKY 0.3.3 — przekazanie do wdrożenia
+# MEVKY 0.3.4 — przekazanie do wdrożenia
 
-Pełny pakiet przekazania: `release/MEVKY-0.3.3-wdrozenie.zip`. Rozpakuj go; w panelu WordPress instaluj tylko wewnętrzny `MEVKY-0.3.3.zip`. Katalog `deployment` zawiera instrukcję, kontrolę konfiguracji i importer opisów.
+Pełny pakiet przekazania: `release/MEVKY-0.3.4-wdrozenie.zip`. Rozpakuj go; w panelu WordPress instaluj tylko wewnętrzny `MEVKY-0.3.4.zip`. Katalog `deployment` zawiera instrukcję, kontrolę konfiguracji i importer opisów.
 
 Najprostsza instalacja bez SSH: po aktywacji motywu wgraj jako wtyczkę
 `MEVKY-pomocnik-wdrozenia-1.0.0.zip`. Otwórz **Narzędzia → Wdrożenie MEVKY**,
@@ -10,15 +10,19 @@ cen, stanów, zdjęć, płatności ani zamówień.
 
 ## Stan
 
-Gotowy motyw i lokalny sklep demonstracyjny. Domena mevky.pl nie została zmieniona.
-Paczka `release/MEVKY-0.3.3.zip` zawiera wyłącznie motyw, lokalne fonty,
+Motyw 0.3.4 wdrożony na mevky.pl 22.09.2026. Wyniki pomiarów produkcji w PERFORMANCE.md.
+Paczka `release/MEVKY-0.3.4.zip` zawiera wyłącznie motyw, lokalne fonty,
 obrazy, treści i szablony. Nie zawiera WordPressa, bazy, wtyczek testowych,
 haseł, kont klientów ani konfiguracji płatniczej.
 
-## Wydanie 0.3.3
+## Wydanie 0.3.4
+
+- Optymalizacja produkcyjnego WordPressa: fonty, obrazy WebP, lżejszy odnośnik koszyka, ograniczenie skryptów checkoutu i odtwarzacza wideo do potrzebnych stron.
+- LiteSpeed: minifikacja CSS włączona, łączenie CSS wyłączone po porównaniu pomiarów.
+- Wyniki produkcji i ograniczenia opisano w PERFORMANCE.md.
 
 - Dodany podpis „Stworzone przez FOTZ Studio” w stopce.
-- Publiczny odczyt mevky.pl z 22.09.2026 potwierdza aktywny motyw MEVKY 0.3.2, WordPress 7.1.2 i WooCommerce 11.1.0.
+- Publiczny odczyt mevky.pl z 22.09.2026 potwierdza aktywny motyw MEVKY 0.3.4, WordPress 7.1.2 i WooCommerce 11.1.0.
 - Paczka aktualizuje motyw; nie zawiera statycznego katalogu public/ ani jego skryptów demonstracyjnych. Wyniki Lighthouse prezentacji Vercel nie potwierdzają wydajności sklepu WordPress.
 - Zgodność wersji potwierdzona publicznie; płatności, konfiguracja serwera i zapisane w bazie szablony wymagają kontroli na stagingu.
 

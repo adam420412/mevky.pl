@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://mevky.pl/wp-content/uploads/2026/09/lustro-crystal-40-1-768x1024.jpg",
+    "sha256": "c5e84fe2766a9792a25527b289db93118ba8621804a0c3530fc5028065026e8e",
+    "stem": "crystal40",
+    "widths": [
+      400,
+      600,
+      768
+    ],
+    "quality": 74
+  },
+  {
+    "url": "https://mevky.pl/wp-content/uploads/2026/09/lustro-crystal-30-0.png",
+    "sha256": "3fe1b257848a0285ab8d07041f0e95c4e681f18ca5d1e151e7f68dbe8885e2df",
+    "stem": "crystal30",
+    "widths": [
+      400,
+      622
+    ],
+    "quality": 80
+  }
+]

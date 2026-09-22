@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MEVKY_VERSION', '0.3.3' );
+define( 'MEVKY_VERSION', '0.3.4' );
 
 /**
  * Wsparcie motywu.
@@ -48,8 +48,8 @@ add_action( 'wp_enqueue_scripts', 'mevky_assets' );
  */
 function mevky_preload_fonts() {
 	$fonts = array(
-		'/assets/fonts/fraunces-latin.woff2',
-		'/assets/fonts/inter-latin.woff2',
+		'/assets/performance/fraunces-latin.woff2',
+		'/assets/performance/inter-latin.woff2',
 	);
 	foreach ( $fonts as $font ) {
 		printf(
@@ -141,3 +141,5 @@ add_action( 'wp_enqueue_scripts', function () {
 
 require_once get_theme_file_path( 'inc/publication.php' );
 require_once get_theme_file_path( 'inc/payments.php' );
+
+require_once get_theme_file_path( 'inc/performance.php' );
