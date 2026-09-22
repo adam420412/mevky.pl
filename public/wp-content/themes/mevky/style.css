@@ -7,7 +7,7 @@ Description: Autorski motyw blokowy (FSE) dla sklepu MEVKY. Zbudowany od zera, b
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Version: 0.3.1
+Version: 0.3.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: mevky
@@ -24,6 +24,11 @@ Tags: block-theme, e-commerce, full-site-editing
 	html {
 		scroll-behavior: smooth;
 	}
+}
+
+:where(html, body, .wp-site-blocks) {
+	overflow-x: clip;
+	width: 100%;
 }
 
 /* Wejście sekcji przy scrollu — ŚWIADOMIE WYŁĄCZONE.
@@ -162,12 +167,19 @@ Tags: block-theme, e-commerce, full-site-editing
 .mevky-announcement p { margin:0; font-size:.875rem; }
 .mevky-announcement span { padding:0 .75rem; }
 .mevky-header { margin-top:0; padding:1.35rem 0; border-bottom:1px solid var(--wp--preset--color--line); }
+.mevky-header,
+.mevky-header-inner {
+	width:100%;
+	max-width:100%;
+	box-sizing:border-box;
+}
 .mevky-header-inner { gap:2rem; }
 .mevky-header .wp-block-site-title { font-size:2rem; letter-spacing:.12em; flex-shrink:0; }
 .mevky-header nav { margin-left:auto; }
 .mevky-header .wp-block-navigation__container { gap:clamp(1rem,2.5vw,2.5rem); }
 .mevky-header .wc-block-mini-cart { flex:0 0 auto; margin:0; }
 .mevky-header .wc-block-mini-cart__button { min-height:44px; min-width:44px; }
+.mevky-header .wp-block-navigation__responsive-container { width:100%; }
 .mevky-card { position:relative; }
 .mevky-card .wp-block-woocommerce-product-image { background:#eee8df; overflow:hidden; }
 .mevky-card .wp-block-woocommerce-product-image img { width:100%; aspect-ratio:4/5; object-fit:cover; }
@@ -193,15 +205,86 @@ Tags: block-theme, e-commerce, full-site-editing
 :target { scroll-margin-top:2rem; }
 @media(max-width:781px) {
  .mevky-header { padding:.8rem 0; }
- .mevky-header-inner { gap:.75rem; }
+ .mevky-header-inner { gap:.55rem; min-width:0; }
  .mevky-header .wp-block-site-title { font-size:1.6rem; }
- .mevky-header nav { flex:0 0 auto; }
+ .mevky-header .wp-block-site-title { max-width:min(100%, calc(100vw - 118px)); }
+ .mevky-header .wp-block-site-title { min-width: 0; }
+ .mevky-header .wp-block-site-title a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+ .mevky-header nav {
+  flex:0 0 44px;
+  max-width:44px;
+  width:44px;
+  order:3;
+  margin-left: 0;
+ }
+ .mevky-header .wp-block-navigation__responsive-container {
+   position:relative;
+   overflow:visible;
+   width:44px;
+   max-width:44px;
+   min-width:44px;
+ }
+ .mevky-header .wp-block-navigation__responsive-container:not(.is-menu-open) {
+   align-items:center;
+ }
+ .mevky-header .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__responsive-container-content {
+   display:none;
+ }
  .mevky-header .wp-block-navigation__responsive-container-open { min-width:44px; min-height:44px; justify-content:center; }
  .mevky-header .wc-block-mini-cart { order:2; }
- .mevky-header nav { order:3; }
+ .mevky-header .wp-block-woocommerce-customer-account { order:2; }
+ .mevky-header .wc-block-mini-cart__button,
+ .mevky-header .wc-block-customer-account__link {
+  min-width:44px;
+  min-height:44px;
+ }
  .mevky-header .wp-block-site-title { margin-right:auto; }
- .mevky-header .wp-block-navigation__responsive-container.is-menu-open { padding:2rem; }
- .mevky-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { gap:1.5rem; font-size:1.25rem; }
+ .mevky-header .wp-block-navigation__responsive-container.is-menu-open {
+   position:fixed;
+   inset:0;
+   left:0;
+   right:0;
+   top:0;
+   width:min(100vw, 100%) !important;
+   max-width:min(100vw, 100%) !important;
+   min-width:min(100vw, 100%) !important;
+   box-sizing:border-box;
+   padding:1rem .85rem 1.5rem;
+   background:#f7f7ec !important;
+   z-index:30;
+   overflow-x:hidden;
+   overflow-y:auto;
+   align-items:flex-start;
+   justify-content:flex-start;
+ }
+ .mevky-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+   width:100%;
+   max-width:100%;
+   margin-top:.75rem;
+   gap:1.2rem;
+   font-size:1.15rem;
+   align-items:stretch;
+   padding-right:env(safe-area-inset-right);
+ }
+ .mevky-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+   width:100%;
+   border-bottom:1px solid rgba(0,0,0,0.1);
+   padding-bottom:.6rem;
+ }
+ .mevky-header .wp-block-navigation__responsive-container-close {
+   position:relative;
+   right:auto;
+   margin-left:auto;
+   width:44px;
+   height:44px;
+ }
+ .mevky-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+   width:100%;
+   max-width:none;
+   margin:0;
+   padding-left:0;
+   padding-right:0;
+ }
  .mevky-story { gap:2rem; }
  .mevky-footer { padding-top:2.5rem; }
  .mevky-footer .wp-block-columns { gap:2rem; }
