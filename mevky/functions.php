@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MEVKY_VERSION', '0.3.2' );
+define( 'MEVKY_VERSION', '0.3.3' );
 
 /**
  * Wsparcie motywu.

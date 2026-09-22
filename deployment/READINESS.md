@@ -1,6 +1,6 @@
-# MEVKY 0.3.1 — przekazanie do wdrożenia
+# MEVKY 0.3.3 — przekazanie do wdrożenia
 
-Pełny pakiet przekazania: `release/MEVKY-0.3.1-wdrozenie.zip`. Rozpakuj go; w panelu WordPress instaluj tylko wewnętrzny `MEVKY-0.3.1.zip`. Katalog `deployment` zawiera instrukcję, kontrolę konfiguracji i importer opisów.
+Pełny pakiet przekazania: `release/MEVKY-0.3.3-wdrozenie.zip`. Rozpakuj go; w panelu WordPress instaluj tylko wewnętrzny `MEVKY-0.3.3.zip`. Katalog `deployment` zawiera instrukcję, kontrolę konfiguracji i importer opisów.
 
 Najprostsza instalacja bez SSH: po aktywacji motywu wgraj jako wtyczkę
 `MEVKY-pomocnik-wdrozenia-1.0.0.zip`. Otwórz **Narzędzia → Wdrożenie MEVKY**,
@@ -11,11 +11,17 @@ cen, stanów, zdjęć, płatności ani zamówień.
 ## Stan
 
 Gotowy motyw i lokalny sklep demonstracyjny. Domena mevky.pl nie została zmieniona.
-Paczka `release/MEVKY-0.3.1.zip` zawiera wyłącznie motyw, lokalne fonty,
+Paczka `release/MEVKY-0.3.3.zip` zawiera wyłącznie motyw, lokalne fonty,
 obrazy, treści i szablony. Nie zawiera WordPressa, bazy, wtyczek testowych,
 haseł, kont klientów ani konfiguracji płatniczej.
 
-## Wydanie 0.3.1
+## Wydanie 0.3.3
+
+- Dodany podpis „Stworzone przez FOTZ Studio” w stopce.
+- Publiczny odczyt mevky.pl z 22.09.2026 potwierdza aktywny motyw MEVKY 0.3.2, WordPress 7.1.2 i WooCommerce 11.1.0.
+- Paczka aktualizuje motyw; nie zawiera statycznego katalogu public/ ani jego skryptów demonstracyjnych. Wyniki Lighthouse prezentacji Vercel nie potwierdzają wydajności sklepu WordPress.
+- Zgodność wersji potwierdzona publicznie; płatności, konfiguracja serwera i zapisane w bazie szablony wymagają kontroli na stagingu.
+
 
 - Poprawne proporcje BLIK, Visa, Mastercard i Przelewy24 w stopce oraz przy zakupie.
 - Logotypy są lokalnymi plikami z dotychczasowej strony, bez pobierania zewnętrznych zasobów przez klienta.
